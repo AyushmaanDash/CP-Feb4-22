@@ -5,6 +5,7 @@ int main()
 {
     int t, x, m, n, answer[1000];
     cin >> t;
+    int flag = 0;
     for (int i = 0; i < t; i++)
     {
         cin >> x >> n >> m;
@@ -12,17 +13,35 @@ int main()
         {
             if ((((x / 2) + 10) >= x) || ((x / 2 - 10) <= 10))
             {
-                x = x - 10;
-                m--;
+                if (m)
+                {
+                    x = x - 10;
+                    m--;
+                }
+                else
+                {
+                    flag++;
+                    break;
+                }
             }
 
             else
             {
-                x = (x / 2) + 10;
-                n--;
+                if (n)
+                {
+                    x = (x / 2) + 10;
+                    n--;
+                }
+                else
+                {
+                    flag++;
+                    break;
+                }
+
+                if (flag)
+                    break;
             }
         }
-
         answer[i] = x;
     }
 
@@ -36,4 +55,5 @@ int main()
 
     return 0;
 }
+
 
